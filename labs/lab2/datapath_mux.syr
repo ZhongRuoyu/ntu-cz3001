@@ -1,0 +1,1488 @@
+Release 14.4 - xst P.49d (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: datapath_mux.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "datapath_mux.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "datapath_mux"
+Output Format                      : NGC
+Target Device                      : xc6slx4-3-csg225
+
+---- Source Options
+Top Module Name                    : datapath_mux
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "F:\CZ3001_Lab2\CZ3001_Lab2\regfile.v" into library work
+Parsing verilog file "define.v" included at line 2.
+Parsing module <regfile>.
+Analyzing Verilog file "F:\CZ3001_Lab2\CZ3001_Lab2\control.v" into library work
+Parsing verilog file "define.v" included at line 3.
+Parsing module <control>.
+Analyzing Verilog file "F:\CZ3001_Lab2\CZ3001_Lab2\alu.v" into library work
+Parsing verilog file "define.v" included at line 1.
+Parsing module <alu>.
+WARNING:HDLCompiler:370 - "F:\CZ3001_Lab2\CZ3001_Lab2\alu.v" Line 10: Empty port in module declaration
+Analyzing Verilog file "F:\CZ3001_Lab2\CZ3001_Lab2\datapath_single.v" into library work
+Parsing verilog file "define.v" included at line 1.
+Parsing module <datapath_mux>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <datapath_mux>.
+
+Elaborating module <control>.
+
+Elaborating module <regfile>.
+
+Elaborating module <alu>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <datapath_mux>.
+    Related source file is "F:\CZ3001_Lab2\CZ3001_Lab2\datapath_single.v".
+WARNING:Xst:2898 - Port 'p1', unconnected in block instance 'ALU0', is tied to GND.
+WARNING:Xst:647 - Input <inst<15:10>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <datapath_mux> synthesized.
+
+Synthesizing Unit <control>.
+    Related source file is "F:\CZ3001_Lab2\CZ3001_Lab2\control.v".
+WARNING:Xst:647 - Input <inst_cntrl<10:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <control> synthesized.
+
+Synthesizing Unit <regfile>.
+    Related source file is "F:\CZ3001_Lab2\CZ3001_Lab2\regfile.v".
+    Found 2048-bit register for signal <n0052>.
+    Found 64-bit 32-to-1 multiplexer for signal <waddr[4]_regdata[31][63]_wide_mux_2_OUT> created at line 45.
+    Found 64-bit 32-to-1 multiplexer for signal <raddr1[4]_regdata[31][63]_wide_mux_40_OUT> created at line 48.
+    Found 64-bit 32-to-1 multiplexer for signal <raddr2[4]_regdata[31][63]_wide_mux_43_OUT> created at line 50.
+    Found 5-bit comparator equal for signal <waddr[4]_raddr1[4]_equal_40_o> created at line 48
+    Found 5-bit comparator equal for signal <waddr[4]_raddr2[4]_equal_43_o> created at line 50
+    Summary:
+	inferred 2048 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred  38 Multiplexer(s).
+Unit <regfile> synthesized.
+
+Synthesizing Unit <alu>.
+    Related source file is "F:\CZ3001_Lab2\CZ3001_Lab2\alu.v".
+    Found 64-bit subtractor for signal <a[63]_b[63]_sub_2_OUT> created at line 25.
+    Found 64-bit adder for signal <a[63]_b[63]_add_0_OUT> created at line 24.
+    Found 64-bit 7-to-1 multiplexer for signal <out> created at line 23.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   5 Multiplexer(s).
+Unit <alu> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 64-bit addsub                                         : 1
+# Registers                                            : 1
+ 2048-bit register                                     : 1
+# Comparators                                          : 2
+ 5-bit comparator equal                                : 2
+# Multiplexers                                         : 43
+ 64-bit 2-to-1 multiplexer                             : 40
+ 64-bit 32-to-1 multiplexer                            : 3
+# Xors                                                 : 1
+ 64-bit xor2                                           : 1
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 64-bit addsub                                         : 1
+# Registers                                            : 2048
+ Flip-Flops                                            : 2048
+# Comparators                                          : 2
+ 5-bit comparator equal                                : 2
+# Multiplexers                                         : 43
+ 64-bit 2-to-1 multiplexer                             : 40
+ 64-bit 32-to-1 multiplexer                            : 3
+# Xors                                                 : 1
+ 64-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <datapath_mux> ...
+
+Optimizing unit <regfile> ...
+
+Optimizing unit <alu> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block datapath_mux, actual ratio is 213.
+Optimizing block <datapath_mux> to meet ratio 100 (+ 5) of 600 slices :
+WARNING:Xst:2254 - Area constraint could not be met for block <datapath_mux>, final ratio is 213.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 2048
+ Flip-Flops                                            : 2048
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : datapath_mux.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 3875
+#      LUT3                        : 2240
+#      LUT5                        : 34
+#      LUT6                        : 1346
+#      MUXCY                       : 63
+#      MUXF7                       : 128
+#      XORCY                       : 64
+# FlipFlops/Latches                : 2048
+#      FDR                         : 2045
+#      FDS                         : 3
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 83
+#      IBUF                        : 19
+#      OBUF                        : 64
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx4csg225-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            2048  out of   4800    42%  
+ Number of Slice LUTs:                 3620  out of   2400   150% (*) 
+    Number used as Logic:              3620  out of   2400   150% (*) 
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   4516
+   Number with an unused Flip Flop:    2468  out of   4516    54%  
+   Number with an unused LUT:           896  out of   4516    19%  
+   Number of fully used LUT-FF pairs:  1152  out of   4516    25%  
+   Number of unique control sets:         1
+
+IO Utilization: 
+ Number of IOs:                          98
+ Number of bonded IOBs:                  84  out of    132    63%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+WARNING:Xst:1336 -  (*) More than 100% of Device resources are used
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 2048  |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 212.845ns (Maximum Frequency: 4.698MHz)
+   Minimum input arrival time before clock: 216.300ns
+   Maximum output required time after clock: 215.108ns
+   Maximum combinational path delay: 218.563ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 212.845ns (frequency: 4.698MHz)
+  Total number of paths / destination ports: 75557863725914164000000 / 2048
+-------------------------------------------------------------------------
+Delay:               212.845ns (Levels of Logic = 260)
+  Source:            RF0/regdata_31_320 (FF)
+  Destination:       RF0/regdata_31_2047 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: RF0/regdata_31_320 to RF0/regdata_31_2047
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.447   0.898  RF0/regdata_31_320 (RF0/regdata_31_320)
+     LUT6:I2->O            1   0.203   0.827  RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_81 (RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_81)
+     LUT6:I2->O            1   0.203   0.000  RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_3 (RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_3)
+     MUXF7:I1->O           1   0.140   0.684  RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_2_f7 (RF0/raddr2[4]_regdata[31][63]_wide_mux_43_OUT<0>)
+     LUT3:I1->O            2   0.203   0.721  RF0/Mmux_rdata2110 (rdata2<0>)
+     LUT3:I1->O            1   0.203   0.000  ALU0/Mmux_out1_rs_lut<0> (ALU0/Mmux_out1_rs_lut<0>)
+     XORCY:LI->O           1   0.136   0.580  ALU0/Mmux_out1_rs_xor<0> (ALU0/Mmux_out1_split<0>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out611 (aluout_0_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1110 (rdata1<0>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<0> (ALU0/Mmux_out1_rs_cy<0>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<1> (ALU0/Mmux_out1_split<1>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6121 (aluout_1_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1121 (rdata1<1>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<1> (ALU0/Mmux_out1_rs_cy<1>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<2> (ALU0/Mmux_out1_split<2>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6231 (aluout_2_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1231 (rdata1<2>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<2> (ALU0/Mmux_out1_rs_cy<2>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<3> (ALU0/Mmux_out1_split<3>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6341 (aluout_3_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1341 (rdata1<3>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<3> (ALU0/Mmux_out1_rs_cy<3>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<4> (ALU0/Mmux_out1_split<4>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6451 (aluout_4_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1451 (rdata1<4>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<4> (ALU0/Mmux_out1_rs_cy<4>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<5> (ALU0/Mmux_out1_split<5>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6561 (aluout_5_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1561 (rdata1<5>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<5> (ALU0/Mmux_out1_rs_cy<5>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<6> (ALU0/Mmux_out1_split<6>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6611 (aluout_6_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1611 (rdata1<6>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<6> (ALU0/Mmux_out1_rs_cy<6>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<7> (ALU0/Mmux_out1_split<7>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6621 (aluout_7_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1621 (rdata1<7>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<7> (ALU0/Mmux_out1_rs_cy<7>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<8> (ALU0/Mmux_out1_split<8>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6631 (aluout_8_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1631 (rdata1<8>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<8> (ALU0/Mmux_out1_rs_cy<8>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<9> (ALU0/Mmux_out1_split<9>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6641 (aluout_9_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1641 (rdata1<9>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<9> (ALU0/Mmux_out1_rs_cy<9>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<10> (ALU0/Mmux_out1_split<10>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out621 (aluout_10_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1210 (rdata1<10>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<10> (ALU0/Mmux_out1_rs_cy<10>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<11> (ALU0/Mmux_out1_split<11>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out631 (aluout_11_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1310 (rdata1<11>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<11> (ALU0/Mmux_out1_rs_cy<11>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<12> (ALU0/Mmux_out1_split<12>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out641 (aluout_12_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1410 (rdata1<12>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<12> (ALU0/Mmux_out1_rs_cy<12>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<13> (ALU0/Mmux_out1_split<13>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out651 (aluout_13_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1510 (rdata1<13>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<13> (ALU0/Mmux_out1_rs_cy<13>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<14> (ALU0/Mmux_out1_split<14>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out661 (aluout_14_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata165 (rdata1<14>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<14> (ALU0/Mmux_out1_rs_cy<14>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<15> (ALU0/Mmux_out1_split<15>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out671 (aluout_15_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata171 (rdata1<15>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<15> (ALU0/Mmux_out1_rs_cy<15>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<16> (ALU0/Mmux_out1_split<16>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out681 (aluout_16_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata181 (rdata1<16>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<16> (ALU0/Mmux_out1_rs_cy<16>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<17> (ALU0/Mmux_out1_split<17>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out691 (aluout_17_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata191 (rdata1<17>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<17> (ALU0/Mmux_out1_rs_cy<17>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<18> (ALU0/Mmux_out1_split<18>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6101 (aluout_18_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1101 (rdata1<18>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<18> (ALU0/Mmux_out1_rs_cy<18>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<19> (ALU0/Mmux_out1_split<19>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6111 (aluout_19_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1111 (rdata1<19>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<19> (ALU0/Mmux_out1_rs_cy<19>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<20> (ALU0/Mmux_out1_split<20>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6131 (aluout_20_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1131 (rdata1<20>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<20> (ALU0/Mmux_out1_rs_cy<20>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<21> (ALU0/Mmux_out1_split<21>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6141 (aluout_21_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1141 (rdata1<21>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<21> (ALU0/Mmux_out1_rs_cy<21>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<22> (ALU0/Mmux_out1_split<22>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6151 (aluout_22_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1151 (rdata1<22>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<22> (ALU0/Mmux_out1_rs_cy<22>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<23> (ALU0/Mmux_out1_split<23>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6161 (aluout_23_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1161 (rdata1<23>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<23> (ALU0/Mmux_out1_rs_cy<23>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<24> (ALU0/Mmux_out1_split<24>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6171 (aluout_24_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1171 (rdata1<24>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<24> (ALU0/Mmux_out1_rs_cy<24>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<25> (ALU0/Mmux_out1_split<25>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6181 (aluout_25_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1181 (rdata1<25>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<25> (ALU0/Mmux_out1_rs_cy<25>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<26> (ALU0/Mmux_out1_split<26>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6191 (aluout_26_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1191 (rdata1<26>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<26> (ALU0/Mmux_out1_rs_cy<26>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<27> (ALU0/Mmux_out1_split<27>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6201 (aluout_27_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1201 (rdata1<27>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<27> (ALU0/Mmux_out1_rs_cy<27>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<28> (ALU0/Mmux_out1_split<28>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6211 (aluout_28_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1211 (rdata1<28>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<28> (ALU0/Mmux_out1_rs_cy<28>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<29> (ALU0/Mmux_out1_split<29>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6221 (aluout_29_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1221 (rdata1<29>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<29> (ALU0/Mmux_out1_rs_cy<29>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<30> (ALU0/Mmux_out1_split<30>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6241 (aluout_30_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1241 (rdata1<30>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<30> (ALU0/Mmux_out1_rs_cy<30>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<31> (ALU0/Mmux_out1_split<31>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6251 (aluout_31_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1251 (rdata1<31>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<31> (ALU0/Mmux_out1_rs_cy<31>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<32> (ALU0/Mmux_out1_split<32>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6261 (aluout_32_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1261 (rdata1<32>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<32> (ALU0/Mmux_out1_rs_cy<32>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<33> (ALU0/Mmux_out1_split<33>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6271 (aluout_33_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1271 (rdata1<33>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<33> (ALU0/Mmux_out1_rs_cy<33>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<34> (ALU0/Mmux_out1_split<34>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6281 (aluout_34_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1281 (rdata1<34>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<34> (ALU0/Mmux_out1_rs_cy<34>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<35> (ALU0/Mmux_out1_split<35>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6291 (aluout_35_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1291 (rdata1<35>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<35> (ALU0/Mmux_out1_rs_cy<35>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<36> (ALU0/Mmux_out1_split<36>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6301 (aluout_36_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1301 (rdata1<36>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<36> (ALU0/Mmux_out1_rs_cy<36>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<37> (ALU0/Mmux_out1_split<37>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6311 (aluout_37_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1311 (rdata1<37>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<37> (ALU0/Mmux_out1_rs_cy<37>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<38> (ALU0/Mmux_out1_split<38>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6321 (aluout_38_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1321 (rdata1<38>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<38> (ALU0/Mmux_out1_rs_cy<38>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<39> (ALU0/Mmux_out1_split<39>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6331 (aluout_39_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1331 (rdata1<39>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<39> (ALU0/Mmux_out1_rs_cy<39>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<40> (ALU0/Mmux_out1_split<40>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6351 (aluout_40_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1351 (rdata1<40>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<40> (ALU0/Mmux_out1_rs_cy<40>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<41> (ALU0/Mmux_out1_split<41>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6361 (aluout_41_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1361 (rdata1<41>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<41> (ALU0/Mmux_out1_rs_cy<41>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<42> (ALU0/Mmux_out1_split<42>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6371 (aluout_42_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1371 (rdata1<42>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<42> (ALU0/Mmux_out1_rs_cy<42>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<43> (ALU0/Mmux_out1_split<43>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6381 (aluout_43_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1381 (rdata1<43>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<43> (ALU0/Mmux_out1_rs_cy<43>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<44> (ALU0/Mmux_out1_split<44>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6391 (aluout_44_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1391 (rdata1<44>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<44> (ALU0/Mmux_out1_rs_cy<44>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<45> (ALU0/Mmux_out1_split<45>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6401 (aluout_45_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1401 (rdata1<45>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<45> (ALU0/Mmux_out1_rs_cy<45>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<46> (ALU0/Mmux_out1_split<46>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6411 (aluout_46_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1411 (rdata1<46>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<46> (ALU0/Mmux_out1_rs_cy<46>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<47> (ALU0/Mmux_out1_split<47>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6421 (aluout_47_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1421 (rdata1<47>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<47> (ALU0/Mmux_out1_rs_cy<47>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<48> (ALU0/Mmux_out1_split<48>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6431 (aluout_48_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1431 (rdata1<48>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<48> (ALU0/Mmux_out1_rs_cy<48>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<49> (ALU0/Mmux_out1_split<49>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6441 (aluout_49_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1441 (rdata1<49>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<49> (ALU0/Mmux_out1_rs_cy<49>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<50> (ALU0/Mmux_out1_split<50>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6461 (aluout_50_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1461 (rdata1<50>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<50> (ALU0/Mmux_out1_rs_cy<50>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<51> (ALU0/Mmux_out1_split<51>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6471 (aluout_51_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1471 (rdata1<51>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<51> (ALU0/Mmux_out1_rs_cy<51>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<52> (ALU0/Mmux_out1_split<52>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6481 (aluout_52_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1481 (rdata1<52>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<52> (ALU0/Mmux_out1_rs_cy<52>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<53> (ALU0/Mmux_out1_split<53>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6491 (aluout_53_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1491 (rdata1<53>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<53> (ALU0/Mmux_out1_rs_cy<53>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<54> (ALU0/Mmux_out1_split<54>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6501 (aluout_54_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1501 (rdata1<54>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<54> (ALU0/Mmux_out1_rs_cy<54>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<55> (ALU0/Mmux_out1_split<55>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6511 (aluout_55_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1511 (rdata1<55>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<55> (ALU0/Mmux_out1_rs_cy<55>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<56> (ALU0/Mmux_out1_split<56>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6521 (aluout_56_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1521 (rdata1<56>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<56> (ALU0/Mmux_out1_rs_cy<56>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<57> (ALU0/Mmux_out1_split<57>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6531 (aluout_57_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1531 (rdata1<57>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<57> (ALU0/Mmux_out1_rs_cy<57>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<58> (ALU0/Mmux_out1_split<58>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6541 (aluout_58_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1541 (rdata1<58>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<58> (ALU0/Mmux_out1_rs_cy<58>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<59> (ALU0/Mmux_out1_split<59>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6551 (aluout_59_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1551 (rdata1<59>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<59> (ALU0/Mmux_out1_rs_cy<59>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<60> (ALU0/Mmux_out1_split<60>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6571 (aluout_60_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1571 (rdata1<60>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<60> (ALU0/Mmux_out1_rs_cy<60>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<61> (ALU0/Mmux_out1_split<61>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6581 (aluout_61_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1581 (rdata1<61>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<61> (ALU0/Mmux_out1_rs_cy<61>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<62> (ALU0/Mmux_out1_split<62>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6591 (aluout_62_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1591 (rdata1<62>)
+     MUXCY:DI->O           0   0.145   0.000  ALU0/Mmux_out1_rs_cy<62> (ALU0/Mmux_out1_rs_cy<62>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<63> (ALU0/Mmux_out1_split<63>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6601 (aluout_63_OBUF)
+     LUT3:I2->O            1   0.205   0.000  RF0/Mmux_regdata[0][63]_waddr[4]_mux_36_OUT601 (RF0/regdata[0][63]_waddr[4]_mux_36_OUT<63>)
+     FDR:D                     0.102          RF0/regdata_31_2047
+    ----------------------------------------
+    Total                    212.845ns (48.352ns logic, 164.493ns route)
+                                       (22.7% logic, 77.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 76738455346631550000000 / 4096
+-------------------------------------------------------------------------
+Offset:              216.300ns (Levels of Logic = 260)
+  Source:            inst<16> (PAD)
+  Destination:       RF0/regdata_31_2047 (FF)
+  Destination Clock: clk rising
+
+  Data Path: inst<16> to RF0/regdata_31_2047
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           513   1.222   2.435  inst_16_IBUF (inst_16_IBUF)
+     LUT6:I1->O            1   0.203   0.924  RF0/waddr[4]_raddr2[4]_equal_43_o5_SW0 (N2)
+     LUT5:I0->O           64   0.203   1.868  RF0/waddr[4]_raddr2[4]_equal_43_o5 (RF0/waddr[4]_raddr2[4]_equal_43_o)
+     LUT3:I0->O            2   0.205   0.721  RF0/Mmux_rdata2110 (rdata2<0>)
+     LUT3:I1->O            1   0.203   0.000  ALU0/Mmux_out1_rs_lut<0> (ALU0/Mmux_out1_rs_lut<0>)
+     XORCY:LI->O           1   0.136   0.580  ALU0/Mmux_out1_rs_xor<0> (ALU0/Mmux_out1_split<0>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out611 (aluout_0_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1110 (rdata1<0>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<0> (ALU0/Mmux_out1_rs_cy<0>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<1> (ALU0/Mmux_out1_split<1>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6121 (aluout_1_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1121 (rdata1<1>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<1> (ALU0/Mmux_out1_rs_cy<1>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<2> (ALU0/Mmux_out1_split<2>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6231 (aluout_2_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1231 (rdata1<2>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<2> (ALU0/Mmux_out1_rs_cy<2>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<3> (ALU0/Mmux_out1_split<3>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6341 (aluout_3_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1341 (rdata1<3>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<3> (ALU0/Mmux_out1_rs_cy<3>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<4> (ALU0/Mmux_out1_split<4>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6451 (aluout_4_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1451 (rdata1<4>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<4> (ALU0/Mmux_out1_rs_cy<4>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<5> (ALU0/Mmux_out1_split<5>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6561 (aluout_5_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1561 (rdata1<5>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<5> (ALU0/Mmux_out1_rs_cy<5>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<6> (ALU0/Mmux_out1_split<6>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6611 (aluout_6_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1611 (rdata1<6>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<6> (ALU0/Mmux_out1_rs_cy<6>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<7> (ALU0/Mmux_out1_split<7>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6621 (aluout_7_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1621 (rdata1<7>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<7> (ALU0/Mmux_out1_rs_cy<7>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<8> (ALU0/Mmux_out1_split<8>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6631 (aluout_8_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1631 (rdata1<8>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<8> (ALU0/Mmux_out1_rs_cy<8>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<9> (ALU0/Mmux_out1_split<9>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6641 (aluout_9_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1641 (rdata1<9>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<9> (ALU0/Mmux_out1_rs_cy<9>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<10> (ALU0/Mmux_out1_split<10>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out621 (aluout_10_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1210 (rdata1<10>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<10> (ALU0/Mmux_out1_rs_cy<10>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<11> (ALU0/Mmux_out1_split<11>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out631 (aluout_11_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1310 (rdata1<11>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<11> (ALU0/Mmux_out1_rs_cy<11>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<12> (ALU0/Mmux_out1_split<12>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out641 (aluout_12_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1410 (rdata1<12>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<12> (ALU0/Mmux_out1_rs_cy<12>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<13> (ALU0/Mmux_out1_split<13>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out651 (aluout_13_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1510 (rdata1<13>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<13> (ALU0/Mmux_out1_rs_cy<13>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<14> (ALU0/Mmux_out1_split<14>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out661 (aluout_14_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata165 (rdata1<14>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<14> (ALU0/Mmux_out1_rs_cy<14>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<15> (ALU0/Mmux_out1_split<15>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out671 (aluout_15_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata171 (rdata1<15>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<15> (ALU0/Mmux_out1_rs_cy<15>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<16> (ALU0/Mmux_out1_split<16>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out681 (aluout_16_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata181 (rdata1<16>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<16> (ALU0/Mmux_out1_rs_cy<16>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<17> (ALU0/Mmux_out1_split<17>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out691 (aluout_17_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata191 (rdata1<17>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<17> (ALU0/Mmux_out1_rs_cy<17>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<18> (ALU0/Mmux_out1_split<18>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6101 (aluout_18_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1101 (rdata1<18>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<18> (ALU0/Mmux_out1_rs_cy<18>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<19> (ALU0/Mmux_out1_split<19>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6111 (aluout_19_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1111 (rdata1<19>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<19> (ALU0/Mmux_out1_rs_cy<19>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<20> (ALU0/Mmux_out1_split<20>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6131 (aluout_20_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1131 (rdata1<20>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<20> (ALU0/Mmux_out1_rs_cy<20>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<21> (ALU0/Mmux_out1_split<21>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6141 (aluout_21_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1141 (rdata1<21>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<21> (ALU0/Mmux_out1_rs_cy<21>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<22> (ALU0/Mmux_out1_split<22>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6151 (aluout_22_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1151 (rdata1<22>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<22> (ALU0/Mmux_out1_rs_cy<22>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<23> (ALU0/Mmux_out1_split<23>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6161 (aluout_23_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1161 (rdata1<23>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<23> (ALU0/Mmux_out1_rs_cy<23>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<24> (ALU0/Mmux_out1_split<24>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6171 (aluout_24_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1171 (rdata1<24>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<24> (ALU0/Mmux_out1_rs_cy<24>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<25> (ALU0/Mmux_out1_split<25>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6181 (aluout_25_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1181 (rdata1<25>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<25> (ALU0/Mmux_out1_rs_cy<25>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<26> (ALU0/Mmux_out1_split<26>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6191 (aluout_26_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1191 (rdata1<26>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<26> (ALU0/Mmux_out1_rs_cy<26>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<27> (ALU0/Mmux_out1_split<27>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6201 (aluout_27_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1201 (rdata1<27>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<27> (ALU0/Mmux_out1_rs_cy<27>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<28> (ALU0/Mmux_out1_split<28>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6211 (aluout_28_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1211 (rdata1<28>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<28> (ALU0/Mmux_out1_rs_cy<28>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<29> (ALU0/Mmux_out1_split<29>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6221 (aluout_29_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1221 (rdata1<29>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<29> (ALU0/Mmux_out1_rs_cy<29>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<30> (ALU0/Mmux_out1_split<30>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6241 (aluout_30_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1241 (rdata1<30>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<30> (ALU0/Mmux_out1_rs_cy<30>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<31> (ALU0/Mmux_out1_split<31>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6251 (aluout_31_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1251 (rdata1<31>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<31> (ALU0/Mmux_out1_rs_cy<31>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<32> (ALU0/Mmux_out1_split<32>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6261 (aluout_32_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1261 (rdata1<32>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<32> (ALU0/Mmux_out1_rs_cy<32>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<33> (ALU0/Mmux_out1_split<33>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6271 (aluout_33_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1271 (rdata1<33>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<33> (ALU0/Mmux_out1_rs_cy<33>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<34> (ALU0/Mmux_out1_split<34>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6281 (aluout_34_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1281 (rdata1<34>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<34> (ALU0/Mmux_out1_rs_cy<34>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<35> (ALU0/Mmux_out1_split<35>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6291 (aluout_35_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1291 (rdata1<35>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<35> (ALU0/Mmux_out1_rs_cy<35>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<36> (ALU0/Mmux_out1_split<36>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6301 (aluout_36_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1301 (rdata1<36>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<36> (ALU0/Mmux_out1_rs_cy<36>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<37> (ALU0/Mmux_out1_split<37>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6311 (aluout_37_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1311 (rdata1<37>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<37> (ALU0/Mmux_out1_rs_cy<37>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<38> (ALU0/Mmux_out1_split<38>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6321 (aluout_38_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1321 (rdata1<38>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<38> (ALU0/Mmux_out1_rs_cy<38>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<39> (ALU0/Mmux_out1_split<39>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6331 (aluout_39_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1331 (rdata1<39>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<39> (ALU0/Mmux_out1_rs_cy<39>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<40> (ALU0/Mmux_out1_split<40>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6351 (aluout_40_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1351 (rdata1<40>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<40> (ALU0/Mmux_out1_rs_cy<40>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<41> (ALU0/Mmux_out1_split<41>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6361 (aluout_41_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1361 (rdata1<41>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<41> (ALU0/Mmux_out1_rs_cy<41>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<42> (ALU0/Mmux_out1_split<42>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6371 (aluout_42_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1371 (rdata1<42>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<42> (ALU0/Mmux_out1_rs_cy<42>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<43> (ALU0/Mmux_out1_split<43>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6381 (aluout_43_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1381 (rdata1<43>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<43> (ALU0/Mmux_out1_rs_cy<43>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<44> (ALU0/Mmux_out1_split<44>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6391 (aluout_44_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1391 (rdata1<44>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<44> (ALU0/Mmux_out1_rs_cy<44>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<45> (ALU0/Mmux_out1_split<45>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6401 (aluout_45_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1401 (rdata1<45>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<45> (ALU0/Mmux_out1_rs_cy<45>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<46> (ALU0/Mmux_out1_split<46>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6411 (aluout_46_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1411 (rdata1<46>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<46> (ALU0/Mmux_out1_rs_cy<46>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<47> (ALU0/Mmux_out1_split<47>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6421 (aluout_47_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1421 (rdata1<47>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<47> (ALU0/Mmux_out1_rs_cy<47>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<48> (ALU0/Mmux_out1_split<48>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6431 (aluout_48_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1431 (rdata1<48>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<48> (ALU0/Mmux_out1_rs_cy<48>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<49> (ALU0/Mmux_out1_split<49>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6441 (aluout_49_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1441 (rdata1<49>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<49> (ALU0/Mmux_out1_rs_cy<49>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<50> (ALU0/Mmux_out1_split<50>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6461 (aluout_50_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1461 (rdata1<50>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<50> (ALU0/Mmux_out1_rs_cy<50>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<51> (ALU0/Mmux_out1_split<51>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6471 (aluout_51_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1471 (rdata1<51>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<51> (ALU0/Mmux_out1_rs_cy<51>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<52> (ALU0/Mmux_out1_split<52>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6481 (aluout_52_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1481 (rdata1<52>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<52> (ALU0/Mmux_out1_rs_cy<52>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<53> (ALU0/Mmux_out1_split<53>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6491 (aluout_53_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1491 (rdata1<53>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<53> (ALU0/Mmux_out1_rs_cy<53>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<54> (ALU0/Mmux_out1_split<54>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6501 (aluout_54_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1501 (rdata1<54>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<54> (ALU0/Mmux_out1_rs_cy<54>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<55> (ALU0/Mmux_out1_split<55>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6511 (aluout_55_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1511 (rdata1<55>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<55> (ALU0/Mmux_out1_rs_cy<55>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<56> (ALU0/Mmux_out1_split<56>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6521 (aluout_56_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1521 (rdata1<56>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<56> (ALU0/Mmux_out1_rs_cy<56>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<57> (ALU0/Mmux_out1_split<57>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6531 (aluout_57_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1531 (rdata1<57>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<57> (ALU0/Mmux_out1_rs_cy<57>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<58> (ALU0/Mmux_out1_split<58>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6541 (aluout_58_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1541 (rdata1<58>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<58> (ALU0/Mmux_out1_rs_cy<58>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<59> (ALU0/Mmux_out1_split<59>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6551 (aluout_59_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1551 (rdata1<59>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<59> (ALU0/Mmux_out1_rs_cy<59>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<60> (ALU0/Mmux_out1_split<60>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6571 (aluout_60_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1571 (rdata1<60>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<60> (ALU0/Mmux_out1_rs_cy<60>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<61> (ALU0/Mmux_out1_split<61>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6581 (aluout_61_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1581 (rdata1<61>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<61> (ALU0/Mmux_out1_rs_cy<61>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<62> (ALU0/Mmux_out1_split<62>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6591 (aluout_62_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1591 (rdata1<62>)
+     MUXCY:DI->O           0   0.145   0.000  ALU0/Mmux_out1_rs_cy<62> (ALU0/Mmux_out1_rs_cy<62>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<63> (ALU0/Mmux_out1_split<63>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6601 (aluout_63_OBUF)
+     LUT3:I2->O            1   0.205   0.000  RF0/Mmux_regdata[0][63]_waddr[4]_mux_36_OUT601 (RF0/regdata[0][63]_waddr[4]_mux_36_OUT<63>)
+     FDR:D                     0.102          RF0/regdata_31_2047
+    ----------------------------------------
+    Total                    216.300ns (48.989ns logic, 167.311ns route)
+                                       (22.6% logic, 77.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 2361183241434822100000 / 64
+-------------------------------------------------------------------------
+Offset:              215.108ns (Levels of Logic = 260)
+  Source:            RF0/regdata_31_320 (FF)
+  Destination:       aluout<63> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: RF0/regdata_31_320 to aluout<63>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.447   0.898  RF0/regdata_31_320 (RF0/regdata_31_320)
+     LUT6:I2->O            1   0.203   0.827  RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_81 (RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_81)
+     LUT6:I2->O            1   0.203   0.000  RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_3 (RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_3)
+     MUXF7:I1->O           1   0.140   0.684  RF0/Mmux_raddr2[4]_regdata[31][63]_wide_mux_43_OUT_2_f7 (RF0/raddr2[4]_regdata[31][63]_wide_mux_43_OUT<0>)
+     LUT3:I1->O            2   0.203   0.721  RF0/Mmux_rdata2110 (rdata2<0>)
+     LUT3:I1->O            1   0.203   0.000  ALU0/Mmux_out1_rs_lut<0> (ALU0/Mmux_out1_rs_lut<0>)
+     XORCY:LI->O           1   0.136   0.580  ALU0/Mmux_out1_rs_xor<0> (ALU0/Mmux_out1_split<0>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out611 (aluout_0_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1110 (rdata1<0>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<0> (ALU0/Mmux_out1_rs_cy<0>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<1> (ALU0/Mmux_out1_split<1>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6121 (aluout_1_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1121 (rdata1<1>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<1> (ALU0/Mmux_out1_rs_cy<1>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<2> (ALU0/Mmux_out1_split<2>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6231 (aluout_2_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1231 (rdata1<2>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<2> (ALU0/Mmux_out1_rs_cy<2>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<3> (ALU0/Mmux_out1_split<3>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6341 (aluout_3_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1341 (rdata1<3>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<3> (ALU0/Mmux_out1_rs_cy<3>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<4> (ALU0/Mmux_out1_split<4>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6451 (aluout_4_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1451 (rdata1<4>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<4> (ALU0/Mmux_out1_rs_cy<4>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<5> (ALU0/Mmux_out1_split<5>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6561 (aluout_5_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1561 (rdata1<5>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<5> (ALU0/Mmux_out1_rs_cy<5>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<6> (ALU0/Mmux_out1_split<6>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6611 (aluout_6_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1611 (rdata1<6>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<6> (ALU0/Mmux_out1_rs_cy<6>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<7> (ALU0/Mmux_out1_split<7>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6621 (aluout_7_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1621 (rdata1<7>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<7> (ALU0/Mmux_out1_rs_cy<7>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<8> (ALU0/Mmux_out1_split<8>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6631 (aluout_8_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1631 (rdata1<8>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<8> (ALU0/Mmux_out1_rs_cy<8>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<9> (ALU0/Mmux_out1_split<9>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6641 (aluout_9_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1641 (rdata1<9>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<9> (ALU0/Mmux_out1_rs_cy<9>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<10> (ALU0/Mmux_out1_split<10>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out621 (aluout_10_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1210 (rdata1<10>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<10> (ALU0/Mmux_out1_rs_cy<10>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<11> (ALU0/Mmux_out1_split<11>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out631 (aluout_11_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1310 (rdata1<11>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<11> (ALU0/Mmux_out1_rs_cy<11>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<12> (ALU0/Mmux_out1_split<12>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out641 (aluout_12_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1410 (rdata1<12>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<12> (ALU0/Mmux_out1_rs_cy<12>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<13> (ALU0/Mmux_out1_split<13>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out651 (aluout_13_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1510 (rdata1<13>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<13> (ALU0/Mmux_out1_rs_cy<13>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<14> (ALU0/Mmux_out1_split<14>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out661 (aluout_14_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata165 (rdata1<14>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<14> (ALU0/Mmux_out1_rs_cy<14>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<15> (ALU0/Mmux_out1_split<15>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out671 (aluout_15_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata171 (rdata1<15>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<15> (ALU0/Mmux_out1_rs_cy<15>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<16> (ALU0/Mmux_out1_split<16>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out681 (aluout_16_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata181 (rdata1<16>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<16> (ALU0/Mmux_out1_rs_cy<16>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<17> (ALU0/Mmux_out1_split<17>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out691 (aluout_17_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata191 (rdata1<17>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<17> (ALU0/Mmux_out1_rs_cy<17>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<18> (ALU0/Mmux_out1_split<18>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6101 (aluout_18_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1101 (rdata1<18>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<18> (ALU0/Mmux_out1_rs_cy<18>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<19> (ALU0/Mmux_out1_split<19>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6111 (aluout_19_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1111 (rdata1<19>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<19> (ALU0/Mmux_out1_rs_cy<19>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<20> (ALU0/Mmux_out1_split<20>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6131 (aluout_20_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1131 (rdata1<20>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<20> (ALU0/Mmux_out1_rs_cy<20>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<21> (ALU0/Mmux_out1_split<21>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6141 (aluout_21_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1141 (rdata1<21>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<21> (ALU0/Mmux_out1_rs_cy<21>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<22> (ALU0/Mmux_out1_split<22>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6151 (aluout_22_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1151 (rdata1<22>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<22> (ALU0/Mmux_out1_rs_cy<22>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<23> (ALU0/Mmux_out1_split<23>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6161 (aluout_23_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1161 (rdata1<23>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<23> (ALU0/Mmux_out1_rs_cy<23>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<24> (ALU0/Mmux_out1_split<24>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6171 (aluout_24_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1171 (rdata1<24>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<24> (ALU0/Mmux_out1_rs_cy<24>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<25> (ALU0/Mmux_out1_split<25>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6181 (aluout_25_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1181 (rdata1<25>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<25> (ALU0/Mmux_out1_rs_cy<25>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<26> (ALU0/Mmux_out1_split<26>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6191 (aluout_26_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1191 (rdata1<26>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<26> (ALU0/Mmux_out1_rs_cy<26>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<27> (ALU0/Mmux_out1_split<27>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6201 (aluout_27_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1201 (rdata1<27>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<27> (ALU0/Mmux_out1_rs_cy<27>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<28> (ALU0/Mmux_out1_split<28>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6211 (aluout_28_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1211 (rdata1<28>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<28> (ALU0/Mmux_out1_rs_cy<28>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<29> (ALU0/Mmux_out1_split<29>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6221 (aluout_29_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1221 (rdata1<29>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<29> (ALU0/Mmux_out1_rs_cy<29>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<30> (ALU0/Mmux_out1_split<30>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6241 (aluout_30_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1241 (rdata1<30>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<30> (ALU0/Mmux_out1_rs_cy<30>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<31> (ALU0/Mmux_out1_split<31>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6251 (aluout_31_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1251 (rdata1<31>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<31> (ALU0/Mmux_out1_rs_cy<31>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<32> (ALU0/Mmux_out1_split<32>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6261 (aluout_32_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1261 (rdata1<32>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<32> (ALU0/Mmux_out1_rs_cy<32>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<33> (ALU0/Mmux_out1_split<33>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6271 (aluout_33_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1271 (rdata1<33>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<33> (ALU0/Mmux_out1_rs_cy<33>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<34> (ALU0/Mmux_out1_split<34>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6281 (aluout_34_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1281 (rdata1<34>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<34> (ALU0/Mmux_out1_rs_cy<34>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<35> (ALU0/Mmux_out1_split<35>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6291 (aluout_35_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1291 (rdata1<35>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<35> (ALU0/Mmux_out1_rs_cy<35>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<36> (ALU0/Mmux_out1_split<36>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6301 (aluout_36_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1301 (rdata1<36>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<36> (ALU0/Mmux_out1_rs_cy<36>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<37> (ALU0/Mmux_out1_split<37>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6311 (aluout_37_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1311 (rdata1<37>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<37> (ALU0/Mmux_out1_rs_cy<37>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<38> (ALU0/Mmux_out1_split<38>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6321 (aluout_38_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1321 (rdata1<38>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<38> (ALU0/Mmux_out1_rs_cy<38>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<39> (ALU0/Mmux_out1_split<39>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6331 (aluout_39_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1331 (rdata1<39>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<39> (ALU0/Mmux_out1_rs_cy<39>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<40> (ALU0/Mmux_out1_split<40>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6351 (aluout_40_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1351 (rdata1<40>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<40> (ALU0/Mmux_out1_rs_cy<40>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<41> (ALU0/Mmux_out1_split<41>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6361 (aluout_41_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1361 (rdata1<41>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<41> (ALU0/Mmux_out1_rs_cy<41>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<42> (ALU0/Mmux_out1_split<42>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6371 (aluout_42_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1371 (rdata1<42>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<42> (ALU0/Mmux_out1_rs_cy<42>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<43> (ALU0/Mmux_out1_split<43>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6381 (aluout_43_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1381 (rdata1<43>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<43> (ALU0/Mmux_out1_rs_cy<43>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<44> (ALU0/Mmux_out1_split<44>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6391 (aluout_44_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1391 (rdata1<44>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<44> (ALU0/Mmux_out1_rs_cy<44>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<45> (ALU0/Mmux_out1_split<45>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6401 (aluout_45_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1401 (rdata1<45>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<45> (ALU0/Mmux_out1_rs_cy<45>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<46> (ALU0/Mmux_out1_split<46>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6411 (aluout_46_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1411 (rdata1<46>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<46> (ALU0/Mmux_out1_rs_cy<46>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<47> (ALU0/Mmux_out1_split<47>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6421 (aluout_47_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1421 (rdata1<47>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<47> (ALU0/Mmux_out1_rs_cy<47>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<48> (ALU0/Mmux_out1_split<48>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6431 (aluout_48_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1431 (rdata1<48>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<48> (ALU0/Mmux_out1_rs_cy<48>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<49> (ALU0/Mmux_out1_split<49>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6441 (aluout_49_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1441 (rdata1<49>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<49> (ALU0/Mmux_out1_rs_cy<49>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<50> (ALU0/Mmux_out1_split<50>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6461 (aluout_50_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1461 (rdata1<50>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<50> (ALU0/Mmux_out1_rs_cy<50>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<51> (ALU0/Mmux_out1_split<51>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6471 (aluout_51_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1471 (rdata1<51>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<51> (ALU0/Mmux_out1_rs_cy<51>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<52> (ALU0/Mmux_out1_split<52>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6481 (aluout_52_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1481 (rdata1<52>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<52> (ALU0/Mmux_out1_rs_cy<52>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<53> (ALU0/Mmux_out1_split<53>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6491 (aluout_53_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1491 (rdata1<53>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<53> (ALU0/Mmux_out1_rs_cy<53>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<54> (ALU0/Mmux_out1_split<54>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6501 (aluout_54_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1501 (rdata1<54>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<54> (ALU0/Mmux_out1_rs_cy<54>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<55> (ALU0/Mmux_out1_split<55>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6511 (aluout_55_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1511 (rdata1<55>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<55> (ALU0/Mmux_out1_rs_cy<55>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<56> (ALU0/Mmux_out1_split<56>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6521 (aluout_56_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1521 (rdata1<56>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<56> (ALU0/Mmux_out1_rs_cy<56>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<57> (ALU0/Mmux_out1_split<57>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6531 (aluout_57_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1531 (rdata1<57>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<57> (ALU0/Mmux_out1_rs_cy<57>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<58> (ALU0/Mmux_out1_split<58>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6541 (aluout_58_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1541 (rdata1<58>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<58> (ALU0/Mmux_out1_rs_cy<58>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<59> (ALU0/Mmux_out1_split<59>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6551 (aluout_59_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1551 (rdata1<59>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<59> (ALU0/Mmux_out1_rs_cy<59>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<60> (ALU0/Mmux_out1_split<60>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6571 (aluout_60_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1571 (rdata1<60>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<60> (ALU0/Mmux_out1_rs_cy<60>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<61> (ALU0/Mmux_out1_split<61>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6581 (aluout_61_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1581 (rdata1<61>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<61> (ALU0/Mmux_out1_rs_cy<61>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<62> (ALU0/Mmux_out1_split<62>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6591 (aluout_62_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1591 (rdata1<62>)
+     MUXCY:DI->O           0   0.145   0.000  ALU0/Mmux_out1_rs_cy<62> (ALU0/Mmux_out1_rs_cy<62>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<63> (ALU0/Mmux_out1_split<63>)
+     LUT6:I5->O           35   0.205   1.334  ALU0/Mmux_out6601 (aluout_63_OBUF)
+     OBUF:I->O                 2.571          aluout_63_OBUF (aluout<63>)
+    ----------------------------------------
+    Total                    215.108ns (50.616ns logic, 164.492ns route)
+                                       (23.5% logic, 76.5% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 2398076729582240700000 / 64
+-------------------------------------------------------------------------
+Delay:               218.563ns (Levels of Logic = 260)
+  Source:            inst<16> (PAD)
+  Destination:       aluout<63> (PAD)
+
+  Data Path: inst<16> to aluout<63>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           513   1.222   2.435  inst_16_IBUF (inst_16_IBUF)
+     LUT6:I1->O            1   0.203   0.924  RF0/waddr[4]_raddr2[4]_equal_43_o5_SW0 (N2)
+     LUT5:I0->O           64   0.203   1.868  RF0/waddr[4]_raddr2[4]_equal_43_o5 (RF0/waddr[4]_raddr2[4]_equal_43_o)
+     LUT3:I0->O            2   0.205   0.721  RF0/Mmux_rdata2110 (rdata2<0>)
+     LUT3:I1->O            1   0.203   0.000  ALU0/Mmux_out1_rs_lut<0> (ALU0/Mmux_out1_rs_lut<0>)
+     XORCY:LI->O           1   0.136   0.580  ALU0/Mmux_out1_rs_xor<0> (ALU0/Mmux_out1_split<0>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out611 (aluout_0_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1110 (rdata1<0>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<0> (ALU0/Mmux_out1_rs_cy<0>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<1> (ALU0/Mmux_out1_split<1>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6121 (aluout_1_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1121 (rdata1<1>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<1> (ALU0/Mmux_out1_rs_cy<1>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<2> (ALU0/Mmux_out1_split<2>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6231 (aluout_2_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1231 (rdata1<2>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<2> (ALU0/Mmux_out1_rs_cy<2>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<3> (ALU0/Mmux_out1_split<3>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6341 (aluout_3_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1341 (rdata1<3>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<3> (ALU0/Mmux_out1_rs_cy<3>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<4> (ALU0/Mmux_out1_split<4>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6451 (aluout_4_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1451 (rdata1<4>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<4> (ALU0/Mmux_out1_rs_cy<4>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<5> (ALU0/Mmux_out1_split<5>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6561 (aluout_5_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1561 (rdata1<5>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<5> (ALU0/Mmux_out1_rs_cy<5>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<6> (ALU0/Mmux_out1_split<6>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6611 (aluout_6_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1611 (rdata1<6>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<6> (ALU0/Mmux_out1_rs_cy<6>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<7> (ALU0/Mmux_out1_split<7>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6621 (aluout_7_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1621 (rdata1<7>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<7> (ALU0/Mmux_out1_rs_cy<7>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<8> (ALU0/Mmux_out1_split<8>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6631 (aluout_8_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1631 (rdata1<8>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<8> (ALU0/Mmux_out1_rs_cy<8>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<9> (ALU0/Mmux_out1_split<9>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6641 (aluout_9_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1641 (rdata1<9>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<9> (ALU0/Mmux_out1_rs_cy<9>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<10> (ALU0/Mmux_out1_split<10>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out621 (aluout_10_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1210 (rdata1<10>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<10> (ALU0/Mmux_out1_rs_cy<10>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<11> (ALU0/Mmux_out1_split<11>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out631 (aluout_11_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1310 (rdata1<11>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<11> (ALU0/Mmux_out1_rs_cy<11>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<12> (ALU0/Mmux_out1_split<12>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out641 (aluout_12_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1410 (rdata1<12>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<12> (ALU0/Mmux_out1_rs_cy<12>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<13> (ALU0/Mmux_out1_split<13>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out651 (aluout_13_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1510 (rdata1<13>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<13> (ALU0/Mmux_out1_rs_cy<13>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<14> (ALU0/Mmux_out1_split<14>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out661 (aluout_14_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata165 (rdata1<14>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<14> (ALU0/Mmux_out1_rs_cy<14>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<15> (ALU0/Mmux_out1_split<15>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out671 (aluout_15_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata171 (rdata1<15>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<15> (ALU0/Mmux_out1_rs_cy<15>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<16> (ALU0/Mmux_out1_split<16>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out681 (aluout_16_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata181 (rdata1<16>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<16> (ALU0/Mmux_out1_rs_cy<16>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<17> (ALU0/Mmux_out1_split<17>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out691 (aluout_17_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata191 (rdata1<17>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<17> (ALU0/Mmux_out1_rs_cy<17>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<18> (ALU0/Mmux_out1_split<18>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6101 (aluout_18_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1101 (rdata1<18>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<18> (ALU0/Mmux_out1_rs_cy<18>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<19> (ALU0/Mmux_out1_split<19>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6111 (aluout_19_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1111 (rdata1<19>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<19> (ALU0/Mmux_out1_rs_cy<19>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<20> (ALU0/Mmux_out1_split<20>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6131 (aluout_20_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1131 (rdata1<20>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<20> (ALU0/Mmux_out1_rs_cy<20>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<21> (ALU0/Mmux_out1_split<21>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6141 (aluout_21_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1141 (rdata1<21>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<21> (ALU0/Mmux_out1_rs_cy<21>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<22> (ALU0/Mmux_out1_split<22>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6151 (aluout_22_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1151 (rdata1<22>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<22> (ALU0/Mmux_out1_rs_cy<22>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<23> (ALU0/Mmux_out1_split<23>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6161 (aluout_23_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1161 (rdata1<23>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<23> (ALU0/Mmux_out1_rs_cy<23>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<24> (ALU0/Mmux_out1_split<24>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6171 (aluout_24_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1171 (rdata1<24>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<24> (ALU0/Mmux_out1_rs_cy<24>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<25> (ALU0/Mmux_out1_split<25>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6181 (aluout_25_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1181 (rdata1<25>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<25> (ALU0/Mmux_out1_rs_cy<25>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<26> (ALU0/Mmux_out1_split<26>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6191 (aluout_26_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1191 (rdata1<26>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<26> (ALU0/Mmux_out1_rs_cy<26>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<27> (ALU0/Mmux_out1_split<27>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6201 (aluout_27_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1201 (rdata1<27>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<27> (ALU0/Mmux_out1_rs_cy<27>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<28> (ALU0/Mmux_out1_split<28>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6211 (aluout_28_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1211 (rdata1<28>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<28> (ALU0/Mmux_out1_rs_cy<28>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<29> (ALU0/Mmux_out1_split<29>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6221 (aluout_29_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1221 (rdata1<29>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<29> (ALU0/Mmux_out1_rs_cy<29>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<30> (ALU0/Mmux_out1_split<30>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6241 (aluout_30_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1241 (rdata1<30>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<30> (ALU0/Mmux_out1_rs_cy<30>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<31> (ALU0/Mmux_out1_split<31>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6251 (aluout_31_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1251 (rdata1<31>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<31> (ALU0/Mmux_out1_rs_cy<31>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<32> (ALU0/Mmux_out1_split<32>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6261 (aluout_32_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1261 (rdata1<32>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<32> (ALU0/Mmux_out1_rs_cy<32>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<33> (ALU0/Mmux_out1_split<33>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6271 (aluout_33_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1271 (rdata1<33>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<33> (ALU0/Mmux_out1_rs_cy<33>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<34> (ALU0/Mmux_out1_split<34>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6281 (aluout_34_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1281 (rdata1<34>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<34> (ALU0/Mmux_out1_rs_cy<34>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<35> (ALU0/Mmux_out1_split<35>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6291 (aluout_35_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1291 (rdata1<35>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<35> (ALU0/Mmux_out1_rs_cy<35>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<36> (ALU0/Mmux_out1_split<36>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6301 (aluout_36_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1301 (rdata1<36>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<36> (ALU0/Mmux_out1_rs_cy<36>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<37> (ALU0/Mmux_out1_split<37>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6311 (aluout_37_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1311 (rdata1<37>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<37> (ALU0/Mmux_out1_rs_cy<37>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<38> (ALU0/Mmux_out1_split<38>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6321 (aluout_38_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1321 (rdata1<38>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<38> (ALU0/Mmux_out1_rs_cy<38>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<39> (ALU0/Mmux_out1_split<39>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6331 (aluout_39_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1331 (rdata1<39>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<39> (ALU0/Mmux_out1_rs_cy<39>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<40> (ALU0/Mmux_out1_split<40>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6351 (aluout_40_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1351 (rdata1<40>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<40> (ALU0/Mmux_out1_rs_cy<40>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<41> (ALU0/Mmux_out1_split<41>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6361 (aluout_41_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1361 (rdata1<41>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<41> (ALU0/Mmux_out1_rs_cy<41>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<42> (ALU0/Mmux_out1_split<42>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6371 (aluout_42_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1371 (rdata1<42>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<42> (ALU0/Mmux_out1_rs_cy<42>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<43> (ALU0/Mmux_out1_split<43>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6381 (aluout_43_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1381 (rdata1<43>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<43> (ALU0/Mmux_out1_rs_cy<43>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<44> (ALU0/Mmux_out1_split<44>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6391 (aluout_44_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1391 (rdata1<44>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<44> (ALU0/Mmux_out1_rs_cy<44>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<45> (ALU0/Mmux_out1_split<45>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6401 (aluout_45_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1401 (rdata1<45>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<45> (ALU0/Mmux_out1_rs_cy<45>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<46> (ALU0/Mmux_out1_split<46>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6411 (aluout_46_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1411 (rdata1<46>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<46> (ALU0/Mmux_out1_rs_cy<46>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<47> (ALU0/Mmux_out1_split<47>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6421 (aluout_47_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1421 (rdata1<47>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<47> (ALU0/Mmux_out1_rs_cy<47>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<48> (ALU0/Mmux_out1_split<48>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6431 (aluout_48_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1431 (rdata1<48>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<48> (ALU0/Mmux_out1_rs_cy<48>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<49> (ALU0/Mmux_out1_split<49>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6441 (aluout_49_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1441 (rdata1<49>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<49> (ALU0/Mmux_out1_rs_cy<49>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<50> (ALU0/Mmux_out1_split<50>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6461 (aluout_50_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1461 (rdata1<50>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<50> (ALU0/Mmux_out1_rs_cy<50>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<51> (ALU0/Mmux_out1_split<51>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6471 (aluout_51_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1471 (rdata1<51>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<51> (ALU0/Mmux_out1_rs_cy<51>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<52> (ALU0/Mmux_out1_split<52>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6481 (aluout_52_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1481 (rdata1<52>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<52> (ALU0/Mmux_out1_rs_cy<52>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<53> (ALU0/Mmux_out1_split<53>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6491 (aluout_53_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1491 (rdata1<53>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<53> (ALU0/Mmux_out1_rs_cy<53>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<54> (ALU0/Mmux_out1_split<54>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6501 (aluout_54_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1501 (rdata1<54>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<54> (ALU0/Mmux_out1_rs_cy<54>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<55> (ALU0/Mmux_out1_split<55>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6511 (aluout_55_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1511 (rdata1<55>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<55> (ALU0/Mmux_out1_rs_cy<55>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<56> (ALU0/Mmux_out1_split<56>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6521 (aluout_56_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1521 (rdata1<56>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<56> (ALU0/Mmux_out1_rs_cy<56>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<57> (ALU0/Mmux_out1_split<57>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6531 (aluout_57_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1531 (rdata1<57>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<57> (ALU0/Mmux_out1_rs_cy<57>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<58> (ALU0/Mmux_out1_split<58>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6541 (aluout_58_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1541 (rdata1<58>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<58> (ALU0/Mmux_out1_rs_cy<58>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<59> (ALU0/Mmux_out1_split<59>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6551 (aluout_59_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1551 (rdata1<59>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<59> (ALU0/Mmux_out1_rs_cy<59>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<60> (ALU0/Mmux_out1_split<60>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6571 (aluout_60_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1571 (rdata1<60>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<60> (ALU0/Mmux_out1_rs_cy<60>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<61> (ALU0/Mmux_out1_split<61>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6581 (aluout_61_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1581 (rdata1<61>)
+     MUXCY:DI->O           1   0.145   0.000  ALU0/Mmux_out1_rs_cy<61> (ALU0/Mmux_out1_rs_cy<61>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<62> (ALU0/Mmux_out1_split<62>)
+     LUT6:I5->O           35   0.205   1.335  ALU0/Mmux_out6591 (aluout_62_OBUF)
+     LUT3:I2->O            2   0.205   0.616  RF0/Mmux_rdata1591 (rdata1<62>)
+     MUXCY:DI->O           0   0.145   0.000  ALU0/Mmux_out1_rs_cy<62> (ALU0/Mmux_out1_rs_cy<62>)
+     XORCY:CI->O           1   0.180   0.580  ALU0/Mmux_out1_rs_xor<63> (ALU0/Mmux_out1_split<63>)
+     LUT6:I5->O           35   0.205   1.334  ALU0/Mmux_out6601 (aluout_63_OBUF)
+     OBUF:I->O                 2.571          aluout_63_OBUF (aluout<63>)
+    ----------------------------------------
+    Total                    218.563ns (51.253ns logic, 167.310ns route)
+                                       (23.4% logic, 76.6% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |  212.845|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.96 secs
+ 
+--> 
+
+Total memory usage is 4588212 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

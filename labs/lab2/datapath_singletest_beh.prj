@@ -1,0 +1,6 @@
+verilog work "regfile.v"
+verilog work "control.v"
+verilog work "alu.v"
+verilog work "datapath_single.v"
+verilog work "datapath_singletest.v"
+verilog work "C:/Xilinx/14.4/ISE_DS/ISE//verilog/src/glbl.v"

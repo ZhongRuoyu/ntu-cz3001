@@ -1,0 +1,4 @@
+verilog work "regfile.v"
+verilog work "control.v"
+verilog work "alu.v"
+verilog work "datapath_single.v"

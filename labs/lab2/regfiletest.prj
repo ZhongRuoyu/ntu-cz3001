@@ -1,0 +1,2 @@
+verilog work "regfile.v"
+verilog work "regfiletest.v"

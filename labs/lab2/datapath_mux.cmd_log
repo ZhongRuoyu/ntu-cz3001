@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "F:/CZ3001_Lab2/CZ3001_Lab2/datapath_mux.xst" -ofn "F:/CZ3001_Lab2/CZ3001_Lab2/datapath_mux.syr" 
+xst -intstyle ise -ifn "F:/CZ3001_Lab2/CZ3001_Lab2/datapath_mux.xst" -ofn "F:/CZ3001_Lab2/CZ3001_Lab2/datapath_mux.syr" 

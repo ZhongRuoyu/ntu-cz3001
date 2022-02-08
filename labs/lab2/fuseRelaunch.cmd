@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "F:/CZ3001_Lab2/CZ3001_Lab2/datapath_singletest_isim_beh.exe" -prj "F:/CZ3001_Lab2/CZ3001_Lab2/datapath_singletest_beh.prj" "work.datapath_singletest" "work.glbl" 
